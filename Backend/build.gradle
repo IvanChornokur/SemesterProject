@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.acheron'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = '21'
+}
+
+ext {
+    aws_sdk_version = '1.12.634'
+    jjwt_version = '0.11.5'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.655'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //implementation "com.amazonaws:aws-java-sdk:$aws_sdk_version"
+    implementation 'org.liquibase:liquibase-core'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation "io.jsonwebtoken:jjwt-api:$jjwt_version"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:$jjwt_version"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:$jjwt_version"
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

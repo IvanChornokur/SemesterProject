@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/cococ/IdeaProjects/devx/src/main/java/com/acheron/devx</OriginalElement>
+  <nodes>
+    <node x="1973.3442094322181" y="1420.0344401718962">com.acheron.devx.service.ImageService</node>
+    <node x="3549.857719348905" y="763.4874151579596">com.acheron.devx.dto.LoginRequest</node>
+    <node x="1727.6927891461332" y="1780.166504986695">com.acheron.devx.repository.MessageRepository</node>
+    <node x="820.6822197050994" y="1892.3819560616926">com.acheron.devx.service.UserService</node>
+    <node x="-134.7607875982451" y="1394.6242294846893">com.acheron.devx.entity.type.Role</node>
+    <node x="4205.742400339803" y="828.4758090806838">com.acheron.devx.DevxApplication</node>
+    <node x="2428.871765855524" y="1795.2886441556498">com.acheron.devx.service.MessageService</node>
+    <node x="2878.325975917844" y="1780.5411450019058">com.acheron.devx.config.BucketConfig</node>
+    <node x="834.6651370605884" y="1653.0110505801354">com.acheron.devx.repository.UserRepository</node>
+    <node x="3920.2046111143086" y="1017.242346710681">com.acheron.devx.dto.BidSendDto</node>
+    <node x="1292.5585159735447" y="546.5364466936386">com.acheron.devx.dto.AuctionSaveDto</node>
+    <node x="315.5021738586209" y="1849.0836048601216">com.acheron.devx.config.JwtRequestFilter</node>
+    <node x="-115.91154170582968" y="1695.4926759349783">com.acheron.devx.controller.RegistrationController</node>
+    <node x="446.53015606150825" y="1559.3555916101818">com.acheron.devx.util.JwtTokenUtils</node>
+    <node x="2276.09551149844" y="1511.6753674781396">com.acheron.devx.repository.AuctionRepository</node>
+    <node x="2682.111597741804" y="1410.0908057790282">com.acheron.devx.service.AuctionService</node>
+    <node x="3082.5198782734906" y="2091.3443762576117">com.acheron.devx.service.BidService</node>
+    <node x="3840.3059536966944" y="553.4245444830952">com.acheron.devx.dto.RegistrationDto</node>
+    <node x="4441.87713130653" y="883.1161060089102">com.acheron.devx.entity.Fund</node>
+    <node x="2425.517557971983" y="2031.7799657598994">com.acheron.devx.controller.MainController</node>
+    <node x="3173.174972644802" y="1673.1258412284485">com.acheron.devx.repository.BidRepository</node>
+    <node x="3144.6064820473002" y="635.1676759233113">com.acheron.devx.entity.Message</node>
+    <node x="-521.1472035298369" y="1670.9852797192436">com.acheron.devx.entity.User</node>
+    <node x="3142.293957719083" y="2434.329220980308">com.acheron.devx.entity.Bid</node>
+    <node x="110.3992645085271" y="2048.834354468384">com.acheron.devx.config.SecurityConfig</node>
+    <node x="1002.8888794629863" y="1127.0974200188966">com.acheron.devx.dto.BidSaveDto</node>
+    <node x="3956.1651479149104" y="2258.340933290791">com.acheron.devx.config.WebSocketConfig</node>
+    <node x="1650.6916216295447" y="1395.2931364596798">com.acheron.devx.service.FundService</node>
+    <node x="3490.291243838685" y="1480.3008378889651">com.acheron.devx.entity.Auction</node>
+    <node x="1787.4938155476148" y="1135.668736084218">com.acheron.devx.repository.FundRepository</node>
+    <node x="2074.8764760143854" y="1902.0346497464393">com.acheron.devx.config.PasswordEncoderConfig</node>
+    <node x="4110.704735174117" y="1581.8812384804573">com.acheron.devx.dto.MessageSaveDto</node>
+    <node x="3510.8360925963416" y="2759.4545777072626">com.acheron.devx.handler.MainHandler</node>
+    <node x="1226.8395260790926" y="1666.3136849504845">com.acheron.devx.controller.LoginController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.acheron.devx.entity.Auction" target="com.acheron.devx.entity.Message" relationship="TO_MANY">
+      <point x="0.0" y="-609.5" />
+      <point x="3692.791243838685" y="1111.9874151579597" />
+      <point x="171.5" y="191.3197392346483" />
+    </edge>
+    <edge source="com.acheron.devx.service.MessageService" target="com.acheron.devx.repository.MessageRepository" relationship="TO_ONE">
+      <point x="-193.0" y="-65.12213916895485" />
+      <point x="115.5" y="0.0" />
+    </edge>
+    <edge source="com.acheron.devx.entity.Message" target="com.acheron.devx.entity.Auction" relationship="TO_ONE">
+      <point x="-4.8204730001089047E-4" y="285.50032407668857" />
+      <point x="3316.106" y="1563.591" />
+      <point x="3461.0" y="1563.591" />
+      <point x="3461.0" y="2089.801" />
+      <point x="-202.50024383868504" y="1.6211103479690792E-4" />
+    </edge>
+    <edge source="com.acheron.devx.controller.LoginController" target="com.acheron.devx.service.UserService" relationship="TO_ONE">
+      <point x="-219.99952607909256" y="55.04231504951554" />
+      <point x="778.002" y="1802.856" />
+      <point x="778.002" y="1980.584" />
+      <point x="-176.50021970509943" y="-5.297956061692503" />
+    </edge>
+    <edge source="com.acheron.devx.controller.RegistrationController" target="com.acheron.devx.util.JwtTokenUtils" relationship="TO_ONE">
+      <point x="185.49954170582967" y="3.240650216866925E-4" />
+      <point x="286.0" y="1764.993" />
+      <point x="286.0" y="1664.856" />
+      <point x="-145.00015606150828" y="4.0838981817614695E-4" />
+    </edge>
+    <edge source="com.acheron.devx.controller.MainController" target="com.acheron.devx.service.FundService" relationship="TO_ONE">
+      <point x="-297.999557971983" y="3.424010083108442E-5" />
+      <point x="2057.376" y="2197.28" />
+      <point x="2057.376" y="1621.0" />
+      <point x="1775.192" y="1621.0" />
+      <point x="3.783704553370626E-4" y="81.49986354032012" />
+    </edge>
+    <edge source="com.acheron.devx.entity.Auction" target="com.acheron.devx.entity.Fund" relationship="TO_ONE">
+      <point x="202.5" y="0.0" />
+      <point x="4553.87713130653" y="2089.8008378889654" />
+      <point x="0.0" y="213.5000000000001" />
+    </edge>
+    <edge source="com.acheron.devx.entity.Bid" target="com.acheron.devx.entity.Auction" relationship="TO_ONE">
+      <point x="134.00004228091666" y="-2.2098030785855372E-4" />
+      <point x="3461.0" y="2683.829" />
+      <point x="3461.0" y="2089.801" />
+      <point x="-202.50024383868504" y="1.6211103479690792E-4" />
+    </edge>
+    <edge source="com.acheron.devx.service.AuctionService" target="com.acheron.devx.repository.AuctionRepository" relationship="TO_ONE">
+      <point x="-215.5" y="-20.41543830088858" />
+      <point x="173.0" y="0.0" />
+    </edge>
+    <edge source="com.acheron.devx.service.BidService" target="com.acheron.devx.service.AuctionService" relationship="TO_ONE">
+      <point x="-157.9998782734906" y="-3.7625761160597904E-4" />
+      <point x="3053.0" y="2184.844" />
+      <point x="3053.0" y="2014.28" />
+      <point x="2860.826" y="2014.28" />
+      <point x="-36.78559774180394" y="153.5001942209717" />
+    </edge>
+    <edge source="com.acheron.devx.config.JwtRequestFilter" target="com.acheron.devx.util.JwtTokenUtils" relationship="TO_ONE">
+      <point x="-222.50017385862088" y="3.951398784920457E-4" />
+      <point x="286.0" y="1918.584" />
+      <point x="286.0" y="1664.856" />
+      <point x="-145.00015606150828" y="4.0838981817614695E-4" />
+    </edge>
+    <edge source="com.acheron.devx.service.MessageService" target="com.acheron.devx.entity.Message" relationship="CREATE">
+      <point x="32.72423414447621" y="-81.5" />
+      <point x="2654.596" y="920.6676759233113" />
+      <point x="-171.5" y="0.0" />
+    </edge>
+    <edge source="com.acheron.devx.handler.MainHandler" target="com.acheron.devx.service.MessageService" relationship="TO_ONE">
+      <point x="-208.0000925963418" y="4.2229273731209105E-4" />
+      <point x="3427.794" y="2852.955" />
+      <point x="3427.794" y="1991.0" />
+      <point x="2606.872" y="1991.0" />
+      <point x="-14.999765855523947" y="81.50035584435022" />
+    </edge>
+    <edge source="com.acheron.devx.entity.User" target="com.acheron.devx.entity.type.Role" relationship="TO_ONE">
+      <point x="0.0" y="-321.5" />
+      <point x="-350.64720352983693" y="1488.1242294846893" />
+      <point x="-88.5" y="0.0" />
+    </edge>
+    <edge source="com.acheron.devx.service.MessageService" target="com.acheron.devx.service.AuctionService" relationship="TO_ONE">
+      <point x="2.3414447605318855E-4" y="81.50035584435022" />
+      <point x="2621.872" y="2014.28" />
+      <point x="2860.826" y="2014.28" />
+      <point x="-36.78559774180394" y="153.5001942209717" />
+    </edge>
+    <edge source="com.acheron.devx.controller.MainController" target="com.acheron.devx.service.MessageService" relationship="TO_ONE">
+      <point x="4.4202801700521377E-4" y="-165.4999657598994" />
+      <point x="2723.518" y="1991.0" />
+      <point x="2606.872" y="1991.0" />
+      <point x="-14.999765855523947" y="81.50035584435022" />
+    </edge>
+    <edge source="com.acheron.devx.handler.MainHandler" target="com.acheron.devx.service.BidService" relationship="TO_ONE">
+      <point x="-208.0000925963418" y="-14.999577707262688" />
+      <point x="3442.794" y="2837.955" />
+      <point x="3442.794" y="2053.0" />
+      <point x="3225.52" y="2053.0" />
+      <point x="-14.999878273490594" y="-93.5003762576116" />
+    </edge>
+    <edge source="com.acheron.devx.config.SecurityConfig" target="com.acheron.devx.service.UserService" relationship="TO_ONE">
+      <point x="-2.6450852709558603E-4" y="-93.5003544683841" />
+      <point x="372.899" y="2019.0" />
+      <point x="778.002" y="2019.0" />
+      <point x="778.002" y="1980.584" />
+      <point x="-176.50021970509943" y="-5.297956061692503" />
+    </edge>
+    <edge source="com.acheron.devx.service.BidService" target="com.acheron.devx.repository.BidRepository" relationship="TO_ONE">
+      <point x="1.2172650940556196E-4" y="-93.5003762576116" />
+      <point x="3240.52" y="1777.626" />
+      <point x="3144.0" y="1777.626" />
+      <point x="3144.0" y="1716.626" />
+      <point x="-128.4999726448018" y="1.5877155146881705E-4" />
+    </edge>
+    <edge source="com.acheron.devx.controller.MainController" target="com.acheron.devx.service.BidService" relationship="TO_ONE">
+      <point x="298.000442028017" y="-123.43596575989932" />
+      <point x="3225.52" y="2073.844" />
+      <point x="-14.999878273490594" y="-93.5003762576116" />
+    </edge>
+    <edge source="com.acheron.devx.service.FundService" target="com.acheron.devx.repository.FundRepository" relationship="TO_ONE">
+      <point x="98.30219391807009" y="-81.5" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.acheron.devx.controller.RegistrationController" target="com.acheron.devx.entity.User" relationship="CREATE">
+      <point x="-185.5" y="0.0" />
+      <point x="170.5" y="-227.49260378426538" />
+    </edge>
+    <edge source="com.acheron.devx.handler.MainHandler" target="com.acheron.devx.service.AuctionService" relationship="TO_ONE">
+      <point x="-9.259634180125431E-5" y="93.50042229273731" />
+      <point x="3718.836" y="2963.955" />
+      <point x="3053.0" y="2963.955" />
+      <point x="3053.0" y="2014.28" />
+      <point x="2860.826" y="2014.28" />
+      <point x="-36.78559774180394" y="153.5001942209717" />
+    </edge>
+    <edge source="com.acheron.devx.service.BidService" target="com.acheron.devx.entity.Bid" relationship="CREATE">
+      <point x="35.77407944559263" y="93.5" />
+      <point x="0.0" y="-249.5" />
+    </edge>
+    <edge source="com.acheron.devx.service.AuctionService" target="com.acheron.devx.entity.Auction" relationship="CREATE">
+      <point x="215.5" y="-14.999805779028293" />
+      <point x="-202.5" y="-541.2098378889652" />
+    </edge>
+    <edge source="com.acheron.devx.service.AuctionService" target="com.acheron.devx.repository.BidRepository" relationship="TO_ONE">
+      <point x="215.50040225819612" y="1.942209717071819E-4" />
+      <point x="3144.0" y="1563.591" />
+      <point x="3144.0" y="1716.626" />
+      <point x="-128.4999726448018" y="1.5877155146881705E-4" />
+    </edge>
+    <edge source="com.acheron.devx.service.AuctionService" target="com.acheron.devx.service.FundService" relationship="TO_ONE">
+      <point x="-215.49959774180388" y="1.942209717071819E-4" />
+      <point x="2639.596" y="1563.591" />
+      <point x="2639.596" y="1621.0" />
+      <point x="1775.192" y="1621.0" />
+      <point x="3.783704553370626E-4" y="81.49986354032012" />
+    </edge>
+    <edge source="com.acheron.devx.entity.Auction" target="com.acheron.devx.entity.Bid" relationship="TO_MANY">
+      <point x="-202.5" y="579.028162111035" />
+      <point x="134.0" y="-15.000220980307859" />
+    </edge>
+    <edge source="com.acheron.devx.service.UserService" target="com.acheron.devx.repository.UserRepository" relationship="TO_ONE">
+      <point x="-10.517082644510992" y="-93.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.acheron.devx.controller.MainController" target="com.acheron.devx.service.AuctionService" relationship="TO_ONE">
+      <point x="298.000442028017" y="3.424010083108442E-5" />
+      <point x="3053.0" y="2197.28" />
+      <point x="3053.0" y="2014.28" />
+      <point x="2860.826" y="2014.28" />
+      <point x="-36.78559774180394" y="153.5001942209717" />
+    </edge>
+    <edge source="com.acheron.devx.service.AuctionService" target="com.acheron.devx.service.ImageService" relationship="TO_ONE">
+      <point x="-215.5" y="-86.05636560713197" />
+      <point x="121.0" y="0.0" />
+    </edge>
+    <edge source="com.acheron.devx.config.SecurityConfig" target="com.acheron.devx.config.JwtRequestFilter" relationship="TO_ONE">
+      <point x="165.1029093500938" y="-93.5" />
+      <point x="0.0" y="69.5" />
+    </edge>
+    <edge source="com.acheron.devx.service.AuctionService" target="com.acheron.devx.dto.BidSendDto" relationship="CREATE">
+      <point x="4.022581961180549E-4" y="-153.4998057790283" />
+      <point x="2897.612" y="1309.0" />
+      <point x="3331.106" y="1309.0" />
+      <point x="3331.106" y="1223.668" />
+      <point x="-138.99961111430866" y="4.925653289318916" />
+    </edge>
+    <edge source="com.acheron.devx.controller.LoginController" target="com.acheron.devx.util.JwtTokenUtils" relationship="TO_ONE">
+      <point x="-219.99952607909256" y="40.04231504951554" />
+      <point x="286.0" y="1787.856" />
+      <point x="286.0" y="1664.856" />
+      <point x="-145.00015606150828" y="4.0838981817614695E-4" />
+    </edge>
+    <edge source="com.acheron.devx.controller.RegistrationController" target="com.acheron.devx.service.UserService" relationship="TO_ONE">
+      <point x="-4.582941703006327E-4" y="69.50032406502169" />
+      <point x="69.58800000000002" y="2019.0" />
+      <point x="778.002" y="2019.0" />
+      <point x="778.002" y="1980.584" />
+      <point x="-176.50021970509943" y="-5.297956061692503" />
+    </edge>
+    <edge source="com.acheron.devx.handler.MainHandler" target="com.acheron.devx.dto.BidSendDto" relationship="CREATE">
+      <point x="207.9999074036582" y="4.2229273731209105E-4" />
+      <point x="4449.377" y="2852.955" />
+      <point x="4449.377" y="1452.742" />
+      <point x="3497.791" y="1452.742" />
+      <point x="3497.791" y="1309.0" />
+      <point x="3331.106" y="1309.0" />
+      <point x="3331.106" y="1223.668" />
+      <point x="-138.99961111430866" y="4.925653289318916" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.2772657450076805" showDependencies="true" x="2082.0000000000005" y="1765.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

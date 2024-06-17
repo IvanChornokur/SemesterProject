@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://devx.cmarky7auuui.eu-north-1.rds.amazonaws.com:5432/devx
+    username: acheron
+    password: qwerty123222
+
+aws:
+  region: eu-north-1
+  access_key: AKIA5Q2A6DOFL6W4K37Z
+  secret_access_key: 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
+  bucket_name: devx-int20h
+
+jwt:
+  secret: YXNkc2Fkc2Fkc2Fka2JzYWpoZHZoYWxzZmFzZnNmc2RmYWZk
+  lifetime: 262980m
+
+#logging:
+#  level:
+#    root: debug

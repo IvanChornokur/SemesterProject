@@ -1,0 +1,445 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Auction {
+  + Auction(): 
+  + Auction(Long, String, String, String, String, String, LocalDateTime, LocalDateTime, Integer, Fund, Double, Long, List<Bid>, List<Message>): 
+  - name: String
+  - startValue: Long
+  - description: String
+  - expireTime: LocalDateTime
+  - startTime: LocalDateTime
+  - fund: Fund
+  - bidList: List<Bid>
+  - photo: String
+  - messages: List<Message>
+  - contact: String
+  - fundStake: Double
+  - authorName: String
+  - status: Integer
+  - id: Long
+  + getName(): String
+  + getId(): Long
+  + getDescription(): String
+  + setPhoto(String): void
+  + setStatus(Integer): void
+  # canEqual(Object): boolean
+  + setStartValue(Long): void
+  + getPhoto(): String
+  + getStartValue(): Long
+  + setExpireTime(LocalDateTime): void
+  + hashCode(): int
+  + getMessages(): List<Message>
+  + setFundStake(Double): void
+  + getFundStake(): Double
+  + setFund(Fund): void
+  + equals(Object): boolean
+  + setId(Long): void
+  + getAuthorName(): String
+  + builder(): AuctionBuilder
+  + setAuthorName(String): void
+  + getStatus(): Integer
+  + getContact(): String
+  + getBidList(): List<Bid>
+  + setMessages(List<Message>): void
+  + setContact(String): void
+  + setBidList(List<Bid>): void
+  + getFund(): Fund
+  + setName(String): void
+  + getExpireTime(): LocalDateTime
+  + setDescription(String): void
+  + getStartTime(): LocalDateTime
+  + toString(): String
+  + setStartTime(LocalDateTime): void
+}
+interface AuctionRepository << interface >> {
+  + findAll(String, Integer, Pageable): List<Auction>
+}
+class AuctionSaveDto {
+  + AuctionSaveDto(): 
+  + AuctionSaveDto(String, String, String, String, Integer, Long, Double, Long): 
+  - fund: Long
+  - name: String
+  - contact: String
+  - fundPercentage: Double
+  - price: Long
+  - expirationTime: Integer
+  - authorName: String
+  - description: String
+  + equals(Object): boolean
+  + toString(): String
+  + getName(): String
+  + setDescription(String): void
+  + getDescription(): String
+  + setName(String): void
+  + setFund(Long): void
+  + setFundPercentage(Double): void
+  + setExpirationTime(Integer): void
+  + getAuthorName(): String
+  + getContact(): String
+  + getExpirationTime(): Integer
+  + getFund(): Long
+  + getFundPercentage(): Double
+  + getPrice(): Long
+  + setAuthorName(String): void
+  + setContact(String): void
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + setPrice(Long): void
+}
+class AuctionService {
+  + AuctionService(AuctionRepository, FundService, ImageService, SimpMessagingTemplate, BidRepository): 
+  - fundService: FundService
+  - simpMessagingTemplate: SimpMessagingTemplate
+  - imageService: ImageService
+  - bidService: BidRepository
+  - auctionRepository: AuctionRepository
+  + findAll(): List<Auction>
+  + findById(Long): Optional<Auction>
+  + findAll(String, Integer, Integer, String): List<Auction>
+  + save(AuctionSaveDto, MultipartFile): Auction
+  - delay(Auction): void
+}
+class Bid {
+  + Bid(Long, String, Double, Auction): 
+  + Bid(): 
+  - amount: Double
+  - id: Long
+  - bidderName: String
+  - auction: Auction
+  + getId(): Long
+  + getBidderName(): String
+  + getAmount(): Double
+  + getAuction(): Auction
+  + setId(Long): void
+  + setBidderName(String): void
+  + hashCode(): int
+  + toString(): String
+  + setAmount(Double): void
+  + setAuction(Auction): void
+  # canEqual(Object): boolean
+  + builder(): BidBuilder
+  + equals(Object): boolean
+}
+interface BidRepository << interface >> {
+  + findAll(Long, Sort): List<Bid>
+  + findCurrent(Long): Optional<Bid>
+}
+class BidSaveDto {
+  + BidSaveDto(String, Double): 
+  + BidSaveDto(): 
+  - name: String
+  - value: Double
+  + getName(): String
+  + getValue(): Double
+  + setName(String): void
+  + setValue(Double): void
+  + equals(Object): boolean
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + toString(): String
+}
+class BidSendDto {
+  + BidSendDto(String, Double, Integer): 
+  + BidSendDto(): 
+  - name: String
+  - value: Double
+  - status: Integer
+  + setValue(Double): void
+  + getName(): String
+  + getValue(): Double
+  + toString(): String
+  + getStatus(): Integer
+  + setName(String): void
+  + setStatus(Integer): void
+  + equals(Object): boolean
+  # canEqual(Object): boolean
+  + hashCode(): int
+}
+class BidService {
+  + BidService(BidRepository, AuctionService): 
+  - bidRepository: BidRepository
+  - auctionService: AuctionService
+  + saveBid(BidSaveDto, Long): Bid
+  + findAll(Long): List<Bid>
+  + findCurrent(Long): Optional<Bid>
+}
+class BucketConfig {
+  + BucketConfig(): 
+  - secretAccessKey: String
+  - region: String
+  - accessKey: String
+  + credentials(): AWSCredentials
+  + getClient(): AmazonS3
+}
+class DevxApplication {
+  + DevxApplication(): 
+  + main(String[]): void
+}
+class Fund {
+  + Fund(Long, String, Double): 
+  + Fund(): 
+  - id: Long
+  - name: String
+  - value: Double
+  + getValue(): Double
+  + getId(): Long
+  + getName(): String
+  + builder(): FundBuilder
+  + setId(Long): void
+  + setName(String): void
+  + setValue(Double): void
+  + toString(): String
+  + equals(Object): boolean
+  # canEqual(Object): boolean
+  + hashCode(): int
+}
+interface FundRepository << interface >>
+class FundService {
+  + FundService(FundRepository): 
+  - fundRepository: FundRepository
+  + findById(Long): Optional<Fund>
+  + save(Fund): Fund
+  + findAll(): List<Fund>
+}
+class ImageService {
+  + ImageService(AmazonS3): 
+  - s3: AmazonS3
+  + saveImage(MultipartFile): String
+}
+class JwtRequestFilter {
+  + JwtRequestFilter(JwtTokenUtils): 
+  - log: Logger
+  - jwtTokenUtils: JwtTokenUtils
+  # doFilterInternal(HttpServletRequest, HttpServletResponse, FilterChain): void
+}
+class JwtTokenUtils {
+  + JwtTokenUtils(): 
+  - secret: String
+  - jwtLifetime: Duration
+  + getRoles(String): List<String>
+  - getAllClaimsFromToken(String): Claims
+  + getUsername(String): String
+  + generateToken(UserDetails): String
+}
+class LoginController {
+  + LoginController(AuthenticationManager, UserService, JwtTokenUtils): 
+  - tokenUtils: JwtTokenUtils
+  - authenticationManager: AuthenticationManager
+  - service: UserService
+  + login(LoginRequest): String
+}
+class LoginRequest {
+  + LoginRequest(String, String): 
+  + LoginRequest(): 
+  - username: String
+  - password: String
+  + getUsername(): String
+  + getPassword(): String
+  + setUsername(String): void
+  + setPassword(String): void
+  + equals(Object): boolean
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + toString(): String
+}
+class MainController {
+  + MainController(AuctionService, FundService, MessageService, BidService): 
+  - bidService: BidService
+  - fundService: FundService
+  - auctionService: AuctionService
+  - messageService: MessageService
+  + getCurrentBid(Long): Bid
+  + findAll(Long): List<Bid>
+  + getAllMessages(Long): List<Message>
+  + getAllAuctions(String, Integer, Integer, String): List<Auction>
+  + findAuction(Long): ResponseEntity<Auction>
+  + saveAuction(AuctionSaveDto, HttpServletRequest, MultipartFile): ResponseEntity<Auction>
+  + getAllFunds(): List<Fund>
+}
+class MainHandler {
+  + MainHandler(MessageService, BidService, AuctionService): 
+  - messageService: MessageService
+  - bidService: BidService
+  - auctionService: AuctionService
+  + bidHandler(BidSaveDto, Long): BidSendDto
+  + messageHandler(MessageSaveDto, Long): Message
+}
+class Message {
+  + Message(Long, String, String, String, Auction): 
+  + Message(): 
+  - sender: String
+  - id: Long
+  - color: String
+  - auction: Auction
+  - message: String
+  + getSender(): String
+  + hashCode(): int
+  + getId(): Long
+  + equals(Object): boolean
+  + getMessage(): String
+  + getColor(): String
+  + getAuction(): Auction
+  + setId(Long): void
+  + setMessage(String): void
+  + setSender(String): void
+  + setColor(String): void
+  + builder(): MessageBuilder
+  + toString(): String
+  + setAuction(Auction): void
+  # canEqual(Object): boolean
+}
+interface MessageRepository << interface >> {
+  + findAll(Long): List<Message>
+}
+class MessageSaveDto {
+  + MessageSaveDto(): 
+  + MessageSaveDto(String, String, String): 
+  - sender: String
+  - color: String
+  - message: String
+  + getSender(): String
+  + getMessage(): String
+  + getColor(): String
+  + setSender(String): void
+  + setMessage(String): void
+  + setColor(String): void
+  + equals(Object): boolean
+  + toString(): String
+  # canEqual(Object): boolean
+  + hashCode(): int
+}
+class MessageService {
+  + MessageService(MessageRepository, AuctionService): 
+  - messageRepository: MessageRepository
+  - auctionService: AuctionService
+  + findAll(Long): List<Message>
+  + save(MessageSaveDto, Long): Message
+}
+class PasswordEncoderConfig {
+  + PasswordEncoderConfig(): 
+  + passwordEncoder(): PasswordEncoder
+}
+class RegistrationController {
+  + RegistrationController(UserService, JwtTokenUtils): 
+  - usersService: UserService
+  - tokenUtils: JwtTokenUtils
+  + regPost(RegistrationDto): String
+}
+class RegistrationDto {
+  + RegistrationDto(String, String, String): 
+  + RegistrationDto(): 
+  - password: String
+  - username: String
+  - email: String
+  + getEmail(): String
+  + getUsername(): String
+  + getPassword(): String
+  + setUsername(String): void
+  + setEmail(String): void
+  + setPassword(String): void
+  + equals(Object): boolean
+  # canEqual(Object): boolean
+  + toString(): String
+  + hashCode(): int
+}
+enum Role << enumeration >> {
+  + Role(): 
+  + USER: 
+  + ADMIN: 
+  + getAuthority(): String
+  + valueOf(String): Role
+  + values(): Role[]
+}
+class SecurityConfig {
+  + SecurityConfig(UserService, PasswordEncoder, JwtRequestFilter): 
+  - passwordEncoder: PasswordEncoder
+  - requestFilter: JwtRequestFilter
+  - usersService: UserService
+  + securityFilterChain(HttpSecurity): SecurityFilterChain
+  + authenticationManager(AuthenticationConfiguration): AuthenticationManager
+}
+class User {
+  + User(Long, String, String, String, String, Role): 
+  + User(): 
+  - email: String
+  - role: Role
+  - id: Long
+  - username: String
+  - password: String
+  - image: String
+  + getUsername(): String
+  + getId(): Long
+  + toString(): String
+  + getEmail(): String
+  + getPassword(): String
+  + builder(): UserBuilder
+  + hashCode(): int
+  + getImage(): String
+  + equals(Object): boolean
+  + getRole(): Role
+  + setEmail(String): void
+  + setRole(Role): void
+  + setImage(String): void
+  + setId(Long): void
+  + setUsername(String): void
+  + setPassword(String): void
+  # canEqual(Object): boolean
+}
+interface UserRepository << interface >> {
+  + findByUsername(String): Optional<User>
+}
+class UserService {
+  + UserService(UserRepository, PasswordEncoder): 
+  - userRepo: UserRepository
+  - passwordEncoder: PasswordEncoder
+  + loadUserByUsername(String): UserDetails
+  + findByEmail(String): Optional<User>
+  + save(User): User
+}
+class WebSocketConfig {
+  + WebSocketConfig(): 
+  + registerStompEndpoints(StompEndpointRegistry): void
+  + configureMessageBroker(MessageBrokerRegistry): void
+}
+
+Auction                "1" *-[#595959,plain]-> "bidList\n*" Bid                    
+Auction                "1" *-[#595959,plain]-> "fund\n1" Fund                   
+Auction                "1" *-[#595959,plain]-> "messages\n*" Message                
+AuctionService          -[#595959,dashed]->  Auction                : "«create»"
+AuctionService         "1" *-[#595959,plain]-> "auctionRepository\n1" AuctionRepository      
+AuctionService         "1" *-[#595959,plain]-> "bidService\n1" BidRepository          
+AuctionService          -[#595959,dashed]->  BidSendDto             : "«create»"
+AuctionService         "1" *-[#595959,plain]-> "fundService\n1" FundService            
+AuctionService         "1" *-[#595959,plain]-> "imageService\n1" ImageService           
+Bid                    "1" *-[#595959,plain]-> "auction\n1" Auction                
+BidService             "1" *-[#595959,plain]-> "auctionService\n1" AuctionService         
+BidService              -[#595959,dashed]->  Bid                    : "«create»"
+BidService             "1" *-[#595959,plain]-> "bidRepository\n1" BidRepository          
+FundService            "1" *-[#595959,plain]-> "fundRepository\n1" FundRepository         
+JwtRequestFilter       "1" *-[#595959,plain]-> "jwtTokenUtils\n1" JwtTokenUtils          
+LoginController        "1" *-[#595959,plain]-> "tokenUtils\n1" JwtTokenUtils          
+LoginController        "1" *-[#595959,plain]-> "service\n1" UserService            
+MainController         "1" *-[#595959,plain]-> "auctionService\n1" AuctionService         
+MainController         "1" *-[#595959,plain]-> "bidService\n1" BidService             
+MainController         "1" *-[#595959,plain]-> "fundService\n1" FundService            
+MainController         "1" *-[#595959,plain]-> "messageService\n1" MessageService         
+MainHandler            "1" *-[#595959,plain]-> "auctionService\n1" AuctionService         
+MainHandler             -[#595959,dashed]->  BidSendDto             : "«create»"
+MainHandler            "1" *-[#595959,plain]-> "bidService\n1" BidService             
+MainHandler            "1" *-[#595959,plain]-> "messageService\n1" MessageService         
+Message                "1" *-[#595959,plain]-> "auction\n1" Auction                
+MessageService         "1" *-[#595959,plain]-> "auctionService\n1" AuctionService         
+MessageService          -[#595959,dashed]->  Message                : "«create»"
+MessageService         "1" *-[#595959,plain]-> "messageRepository\n1" MessageRepository      
+RegistrationController "1" *-[#595959,plain]-> "tokenUtils\n1" JwtTokenUtils          
+RegistrationController  -[#595959,dashed]->  User                   : "«create»"
+RegistrationController "1" *-[#595959,plain]-> "usersService\n1" UserService            
+SecurityConfig         "1" *-[#595959,plain]-> "requestFilter\n1" JwtRequestFilter       
+SecurityConfig         "1" *-[#595959,plain]-> "usersService\n1" UserService            
+User                   "1" *-[#595959,plain]-> "role\n1" Role                   
+UserService            "1" *-[#595959,plain]-> "userRepo\n1" UserRepository         
+@enduml
