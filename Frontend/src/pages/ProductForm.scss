@@ -1,0 +1,96 @@
+.overlayF {
+   top: 0;
+   left: 0;
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.15);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 4;
+}
+
+.product-form {
+   input,
+   select {
+      font-size: 1rem;
+      padding: 0.2rem;
+   }
+
+   & > fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+   }
+   width: min(500px, 100%);
+   background-color: var(--light);
+   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+   border-radius: 12px;
+   padding: 1rem;
+
+   label {
+      display: flex;
+      flex-direction: column;
+      // gap: 1rem;
+   }
+   .photo {
+      height: 200px;
+      aspect-ratio: 1;
+      border: 1px dashed #000;
+   }
+
+   .line-inputs {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      & > * {
+         flex: 1;
+      }
+   }
+   .author-name,
+   .contact {
+      input {
+         width: 100%;
+      }
+   }
+
+   .photoView {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      img {
+         height: 120px;
+         width: 200px;
+         object-fit: contain;
+      }
+      p {
+         margin-top: 1rem;
+      }
+   }
+}
+
+.next {
+   padding: 0.3rem 1rem;
+   border: none;
+   font-size: 1.2rem;
+   color: var(--light);
+   background-color: var(--blue);
+   border-radius: 6px;
+   cursor: pointer;
+}
+
+.back {
+   cursor: pointer;
+}
+
+.loading {
+   text-align: center;
+   color: var(--yellow);
+}
+.Error {
+   text-align: center;
+   color: var(--red);
+}

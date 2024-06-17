@@ -1,0 +1,81 @@
+.user-name {
+   // background-color: #fff;
+
+   position: relative;
+
+   .overlay {
+      width: 100%;
+      display: none;
+      z-index: 1;
+      position: absolute;
+      background-color: var(--dark);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+      top: 0;
+      left: 0;
+      border-radius: 6px;
+
+      &.--active{
+         display: block;
+      }
+
+      form {
+         padding: 0 0.5rem 0.5rem;
+         padding-top: calc(0.6rem + 1.5rem + 0.2rem);
+         display: flex;
+         flex-direction: column;
+         gap: 0.5rem;
+
+         label {
+            position: relative;
+            text-align: center;
+            input {
+               border-radius: 6px;
+               margin-top: 0.5rem;
+               outline: none;
+               border: none;
+               background-color: var(--light);
+               width: 100%;
+               padding: 0.3rem 0.5rem;
+            }
+
+            
+         }
+         button{
+            padding: 0.3rem 0.5rem;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--green);
+            color: var(--light);
+            cursor: pointer;
+         }
+      }
+   }
+}
+
+.container {
+   &.--active {
+      box-shadow: none;
+   }
+   background-color: var(--dark);
+   box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+   border-radius: 6px;
+   padding: 0.3rem 0.5rem;
+   gap:1rem;
+   position: relative;
+   z-index: 2;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   span {
+      min-width: 12ch;
+   }
+   & > * {
+      position: relative;
+      z-index: 3;
+      display: block;
+   }
+
+   svg {
+      cursor: pointer;
+   }
+}

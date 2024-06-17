@@ -1,0 +1,59 @@
+.custom-checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px; /* Adjust the space between the checkbox and label */
+    cursor: pointer;
+  }
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: var(--light);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .custom-checkbox input:checked ~ .checkmark:after {
+    content: '';
+    position: absolute;
+    left: 5.5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid #007bff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+
+
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+
+  .custom-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .custom-select select::before {
+    content: '\25BC'; /* Unicode character for the down arrow */
+    transform: translateY(-50%);
+    color: #555;
+  }
